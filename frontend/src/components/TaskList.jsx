@@ -95,7 +95,7 @@ import { Link } from "react-router-dom";
 const TaskList = ({ tasks, fetchTasks }) => {
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/tasks/${id}`, {
+      await axios.delete(`${process.env.BACKEND_URL}/api/tasks/${id}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       fetchTasks(); // Refresh the task list
@@ -107,7 +107,7 @@ const TaskList = ({ tasks, fetchTasks }) => {
   const handleComplete = async (id) => {
     try {
       await axios.patch(
-        `http://localhost:5000/api/tasks/${id}`,
+        `${process.env.BACKEND_URL}/api/tasks/${id}`,
         { completed: true },
         { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
       );

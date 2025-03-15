@@ -12,7 +12,7 @@ const EditTask = ({ fetchTasks }) => {
   useEffect(() => {
     const fetchTask = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/tasks/${id}`, {
+        const response = await axios.get(`${process.env.BACKEND_URL}/api/tasks/${id}`, {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         });
         setTitle(response.data.title);
@@ -30,7 +30,7 @@ const EditTask = ({ fetchTasks }) => {
 
     try {
       await axios.patch(
-        `http://localhost:5000/api/tasks/${id}`,
+        `${process.env.BACKEND_URL}/api/tasks/${id}`,
         { title, description },
         {
           headers: { Authorization: `Bearer ${token}` },

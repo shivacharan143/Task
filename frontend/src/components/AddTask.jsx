@@ -11,7 +11,7 @@ const AddTask = ({ fetchTasks }) => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/tasks",
+        `${process.env.BACKEND_URL}/api/tasks`,
         { title, description },
         {
           headers: { Authorization: `Bearer ${token}` }, // Include the token in the headers

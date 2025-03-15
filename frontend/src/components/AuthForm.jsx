@@ -15,7 +15,7 @@ const AuthForm = ({ setToken }) => {
     const payload = isLogin ? { email, password } : { name, email, password };
 
     try {
-      const response = await axios.post(`http://localhost:5000${endpoint}`, payload);
+      const response = await axios.post(`${process.env.BACKEND_URL}${endpoint}`, payload);
       setToken(response.data.token);
       localStorage.setItem("token", response.data.token);
       navigate("/");
