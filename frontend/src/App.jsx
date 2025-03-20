@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import TaskList from "./components/TaskList";
 import AddTask from "./components/AddTask";
 import AuthForm from "./components/AuthForm";
-import axios from "axios";
+import axios from 'axios'
 import ProtectedRoute from "./components/ProtectedRoute";
 import EditTask from "./components/EditTask"; // Import the EditTask component
 
@@ -14,7 +14,7 @@ const App = () => {
   // Fetch tasks from the backend
   const fetchTasks = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/tasks", {
+      const response = await axios.get("https://taskmanage-fk6r.onrender.com/api/tasks", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setTasks(response.data);

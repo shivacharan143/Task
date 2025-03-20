@@ -1,11 +1,11 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
+import axios from 'axios'
 
 const TaskList = ({ tasks, fetchTasks }) => {
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`${process.env.BACKEND_URL}/api/tasks/${id}`, {
+      await axios.delete(`https://taskmanage-fk6r.onrender.com/api/tasks/${id}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       fetchTasks(); // Refresh the task list
@@ -17,7 +17,7 @@ const TaskList = ({ tasks, fetchTasks }) => {
   const handleComplete = async (id) => {
     try {
       await axios.patch(
-        `${process.env.BACKEND_URL}/api/tasks/${id}`,
+        `https://taskmanage-fk6r.onrender.com/api/tasks/${id}`,
         { completed: true },
         { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
       );
@@ -62,7 +62,6 @@ const TaskList = ({ tasks, fetchTasks }) => {
 };
 
 export default TaskList;
-
 
 
 

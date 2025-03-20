@@ -6,7 +6,15 @@ const taskRoutes = require("./routes/tasks");
 require("dotenv").config();
 
 const app = express();
-app.use(cors());
+// Enable CORS for all routes
+app.use(cors({
+  origin: 'http://localhost:5173', // Allow requests from your frontend origin
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], // Allow these HTTP methods
+  credentials: true, // Allow cookies and credentials
+}));
+
+
+
 app.use(express.json());
 
 // Connect to MongoDB

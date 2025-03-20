@@ -12,7 +12,7 @@ const EditTask = ({ fetchTasks }) => {
   useEffect(() => {
     const fetchTask = async () => {
       try {
-        const response = await axios.get(`${process.env.BACKEND_URL}/api/tasks/${id}`, {
+        const response = await axios.get(`https://taskmanage-fk6r.onrender.com/api/tasks/${id}`, {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         });
         setTitle(response.data.title);
@@ -30,7 +30,7 @@ const EditTask = ({ fetchTasks }) => {
 
     try {
       await axios.patch(
-        `${process.env.BACKEND_URL}/api/tasks/${id}`,
+        `https://taskmanage-fk6r.onrender.com/api/tasks/${id}`,
         { title, description },
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -44,7 +44,7 @@ const EditTask = ({ fetchTasks }) => {
   };
 
   return (
-    <div className="p-4 bg-gray-400 text-black ml-88 mt-40 rounded-md w-3xl">
+    <div className="p-4 bg-white text-black">
       <h1 className="text-2xl font-bold mb-4">Edit Task</h1>
       <form onSubmit={handleSubmit} className="space-y-4">
         <input
@@ -62,7 +62,7 @@ const EditTask = ({ fetchTasks }) => {
           className="w-full p-2 border rounded bg-white"
           required
         />
-        <button type="submit" className="bg-green-500 text-white px-4 py-2 rounded">
+        <button type="submit" className="bg-green-500 text-white px-4 py-2 rounded cursor-pointer">
           Update Task
         </button>
       </form>
